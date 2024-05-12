@@ -1,6 +1,6 @@
 from selene import have, browser
 import os
-import time
+
 
 def test_automation_form():
     browser.open('/automation-practice-form')
