@@ -1,5 +1,6 @@
-from selene import have, be, browser
-
+from selene import have, browser
+import os
+import time
 
 def test_automation_form():
     browser.open('/automation-practice-form')
@@ -19,11 +20,11 @@ def test_automation_form():
 
     # Subjects, Hobbies
     browser.element('#subjectsInput').type('Arts').press_enter()
-    browser.element('.//label[@for="hobbies-checkbox-1"]').click()
-    browser.element('.//label[@for="hobbies-checkbox-3"]').click()
+    browser.element('[for="hobbies-checkbox-1"]').click()
+    browser.element('[for="hobbies-checkbox-3"]').click()
 
     # Picture, Address, State and City
-    browser.element('#uploadPicture').send_keys('C:/Users/djald/PycharmProjects/qa_guru_13_task5/images/111.jpg')
+    browser.element('#uploadPicture').send_keys(os.path.abspath('./images/111.jpg'))
     browser.element('#currentAddress').type('Vladimir Street 12')
     browser.element('#state').click().element('#react-select-3-option-2').click()
     browser.element('#city').click().element('#react-select-4-option-0').click()
@@ -32,17 +33,17 @@ def test_automation_form():
     browser.element('#submit').press_enter()
 
     # Check
-    assert browser.element('.modal-content').should(have.text('Thanks for submitting the form'))
-    assert browser.element('.modal-content').should(have.text('Piter Parker'))
-    assert browser.element('.modal-content').should(have.text('spiderman@example.com'))
-    assert browser.element('.modal-content').should(have.text('Male'))
-    assert browser.element('.modal-content').should(have.text('1234567890'))
-    assert browser.element('.modal-content').should(have.text('28 June,1995'))
-    assert browser.element('.modal-content').should(have.text('Arts'))
-    assert browser.element('.modal-content').should(have.text('Sports, Music'))
-    assert browser.element('.modal-content').should(have.text('111.jpg'))
-    assert browser.element('.modal-content').should(have.text('Vladimir Street 12'))
-    assert browser.element('.modal-content').should(have.text('Haryana Karnal'))
+    browser.element('.modal-content').should(have.text('Thanks for submitting the form'))
+    browser.element('.modal-content').should(have.text('Piter Parker'))
+    browser.element('.modal-content').should(have.text('spiderman@example.com'))
+    browser.element('.modal-content').should(have.text('Male'))
+    browser.element('.modal-content').should(have.text('1234567890'))
+    browser.element('.modal-content').should(have.text('28 June,1995'))
+    browser.element('.modal-content').should(have.text('Arts'))
+    browser.element('.modal-content').should(have.text('Sports, Music'))
+    browser.element('.modal-content').should(have.text('111.jpg'))
+    browser.element('.modal-content').should(have.text('Vladimir Street 12'))
+    browser.element('.modal-content').should(have.text('Haryana Karnal'))
 
     #Close
     browser.element('#closeLargeModal').click()

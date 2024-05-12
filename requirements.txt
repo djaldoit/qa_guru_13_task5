@@ -1,3 +1,2 @@
 selene >= 2.0.0rc9
 pytest >= 8.0.1
-selenium >= 4.20.0
